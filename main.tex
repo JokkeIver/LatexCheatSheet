@@ -1,10 +1,15 @@
 \documentclass{article}
-\usepackage{graphicx} % Required for inserting images
 \usepackage{tikzsymbols} % For inserting CoffeeCup
 \usepackage[hidelinks]{hyperref} % For making hyperlinks betwwen table of contents and sections; [hidelinks] - makes the link not standout
 \usepackage{float} % Allow the use of [h]
 \usepackage{amsmath}
 
+% For images and manipulation thereof
+\usepackage{graphicx}
+\graphicspath{Images/.}
+
+% For modifying tables
+\usepackage[table]{xcolor} % Allows the coloring of tables
 
 % Control of the multi columns setup
 \usepackage{multicol} % Used for making multicolumns
@@ -68,7 +73,10 @@ This section will have focus on some basic styling and layout in latex, such as 
 
 
 \subsection{Text}
-Writing text in \LaTeX in the most basic form is just as easy as one might expect. You just have to write in the editor. But there are some basic functions we can add to this, to make things in the text stand more out. \\
+Writing text in \LaTeX in the most basic form is just as easy as one might expect. You just have to write in the editor. 
+But there are some basic functions we can add to this, to make things in the text stand more out. 
+
+It is these function we will learn about in the following section.
 \subsubsection{Size}
 To set the font-size for your document you have to change the \bs{documentclass\{\ldots\}} to include the following \bs{documentclass[\textit{FONT-SIZE}]\{\ldots\}}. When declaring the font-size you have to use the unit "pt" which stands for points (A typography unit).\\
 
@@ -188,6 +196,98 @@ To use these you have the following three commands
 If you want to find more examples of way to style your text in \LaTeX you can check under Miscellaneous and \hyperref[secc:font-style-sheet]{font-style}
 
 \subsection{Images}
+When working with images there are a few basic usepackages we want to have imported at the beginning of our document.
+
+The following list covers the usepackages and commands: \\
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        \bs{usepackage\{graphicx\}} & Allows us to insert and manipulate images in our document \\ \hline 
+        \bs{graphicspath\{ \{ \textit{PATH-FOR-IMAGE-FOLDER} \} \}} & Informs of the folder where your images is stored \\ \hline
+        \bs{includegraphics\{ \textit{NAME-OF-IMAGE} \}} & Inserts an image into your document \\ \hline
+    \end{tabular}
+\end{table} % Table for the three most basic image commands.
+
+With these three commands can we insert and modify images in our document. We use the \bs{includegraphics} to import the picture: \\
+\includegraphics[height=8cm]{Images/Programming.png} \\
+This is the most basic way of inserting an image. And there are a few different things we can do to make 
+the image look better.
+
+\subsubsection{Resizing and Rotating}
+If we want to change the size or orientation of an image we can pass in different settings in the format as shown bellow
+
+\centering
+\bs{includegraphics[\textit{FORMAT-SETTINGS}]\{ \ldots \} } \\
+\raggedright
+
+This means that you have to import the image into the document as normal but add the [\ldots] with your modifiers
+before the image you're importing. 
+
+There are "three" settings we can use with our image:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        rotate=XXX & Rotates the image XXX degrees \\ \hline
+        width=XXX & Sets the width of the image to XXX \\ \hline
+        height=XXX & Sets the height of the image to XXX \\ \hline
+        \rowcolor{gray!30}
+        scale=XXX & Scales the image XXX-times \\ \hline
+    \end{tabular}
+\end{table}
+
+The gray box is not counted, since it has the same effect as the width, and height setting.
+You can combine all these settings on the same image, by separating them with a ','. The values we give to the settings 
+can be given with a selection of different units. To see the complete list you can look under Miscellaneous and \hyperref[secc:Image-Units]{Image Units}
+
+\subsubsection{Positioning}
+Now that we know how to insert images into our document using the \bs{includegraphics\{\}} command, we will
+look into the positioning of the image. To do this we will have to use an environment called \textit{figure}.
+(We will cover environments in a later section - so just ignore that for now)
+
+\begin{multicols}{2}
+    \noindent
+    \vspace{0.5em}
+    {\large\textbf{Setup:}} \\
+    \textit{Example} \\
+    \bs{begin\{figure\}[\textit{float-value}]}
+    \bs{includegraphics[\textit{setting=value}]\{\textit{IMAGE-NAME}\}} \\
+    \bs{end\{figure\}}
+
+    \textit{Entered} \\
+    \bs{begin\{figure\}[\textit{H}]}
+    \bs{includegraphics[scale=.1]\{Images/Programming.png\}} 
+    \bs{end\{figure\}}
+    \columnbreak
+
+    \noindent
+    \vspace{0.5em}
+    {\large\textbf{Output:}}
+    \begin{figure}[H]
+        \includegraphics[scale=.1]{Images/Programming.png}
+    \end{figure}
+\end{multicols}
+Here we use the \textit{figure} environment to control the positioning of the image. The positioning is 
+controlled by the \textit{float-value}. There are six different parameters that we can use to control the positioning:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|p{5in}|} \hline
+        \rowcolor{gray!30}
+        Parameter & Position \\ \hline
+        h & Place the float \textit{here} - approximately where it is placed in the source text (However, not exactly at the spot) \\ \hline
+        t & Position at the \textit{top} of the page \\ \hline
+        b & Position at the \textit{bottom} of the page \\ \hline
+        p & Put on a special \textit{page} for float only \\ \hline
+        ! & Override internal parameters \LaTeX uses for determining "good" float position \\ \hline
+        H & Places the float at precisely the location in the \LaTeX source code. This requires the \textit{float} package,
+        and though may cause problems occasionally. This is in a way the same as using h! \\ \hline
+    \end{tabular}
+\end{table}
+
+Note that the '!' can be used in combination with the rest of the parameters, but not H.
+
+\subsubsection{Wrapping of text}
+
 \subsection{Lists}
 
 \newpage
@@ -216,20 +316,27 @@ If you want to find more examples of way to style your text in \LaTeX you can ch
 \newpage
 
 \section{Miscellaneous}
-\subsection{Emojies}
-\subsection{Custom Commands}
 \subsection{Font}
 \myblock{
-    {\large\textbf{Font-Family}}
+    \subsubsection{Font-Family}
     \input{TexFiles/Font-Family Sheet.tex}
     \label{secc:font-family-sheet}
-}
+    }
 \myblock{
-    {\large\textbf{Font-Style}}
+    \subsubsection{Font-Styles}
     \input{TexFiles/Font-Style Sheet.tex}
     \label{secc:font-style-sheet}
 }
 
+\subsection{Image}
+\myblock{
+    \subsection{Image Units}
+    \input{TexFiles/Image-Units.tex}
+    \label{secc:Image-Units}
+}
+
+\subsection{Emojies}
+\subsection{Custom Commands}
 \newpage
 
 \section{Error Messages}
