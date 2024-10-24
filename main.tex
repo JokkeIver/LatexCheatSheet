@@ -1,0 +1,237 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikzsymbols} % For inserting CoffeeCup
+\usepackage[hidelinks]{hyperref} % For making hyperlinks betwwen table of contents and sections; [hidelinks] - makes the link not standout
+\usepackage{float} % Allow the use of [h]
+\usepackage{amsmath}
+
+
+% Control of the multi columns setup
+\usepackage{multicol} % Used for making multicolumns
+\setlength{\columnsep}{40pt} % Space between columns
+\setlength{\columnwidth}{0.45\textwidth} % Width of the columns
+
+
+% Opsætning af margner
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+ 
+% Custom commands
+\newcommand{\bs}[1]{\textbackslash\text{#1}} % To use \bs{} for writing out commands
+\newcommand{\myblock}{} % for making custom blocks 
+
+
+
+\title{\LaTeX - Cheat Sheet \\
+        \large A collection of useful latex codes for Computer Science \\
+        Version: 0.1 \\
+        Last updated: \today
+}
+\author{Joakim Iversen}
+\date{}
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+\begin{document}
+
+\begin{titlingpage}
+    \maketitle
+\end{titlingpage} % Making the title
+\newpage
+
+\tableofcontents % Inserting table of content
+\newpage
+
+
+\section{Introduction}
+The creation of this document is for students studying Computer Science or interested in the depth of \LaTeX and the possibilities therein. \\
+The document will have different section with commands and techniques to make the layout and styling of the paper easier and more pleasant to write. \\
+
+If you have suggestions for things to add, or stumble across anything that will be useful to have in the sheet. Please contact: au761308@post.au.dk \\
+\begin{center}
+    Hope you enjoy using the Cheat Sheet \Coffeecup
+\end{center}
+
+
+\newpage
+
+\section{Layout}
+This section will have focus on some basic styling and layout in latex, such as styling text, inserting images and how to make different types of lists. \\
+
+
+\subsection{Text}
+Writing text in \LaTeX in the most basic form is just as easy as one might expect. You just have to write in the editor. But there are some basic functions we can add to this, to make things in the text stand more out. \\
+\subsubsection{Size}
+To set the font-size for your document you have to change the \bs{documentclass\{\ldots\}} to include the following \bs{documentclass[\textit{FONT-SIZE}]\{\ldots\}}. When declaring the font-size you have to use the unit "pt" which stands for points (A typography unit).\\
+
+
+Besides setting the document font-size \LaTeX has 10 different size modifiers to use inside the basic text. These modifiers are the following: \\
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \bs{tiny} & \tiny{Lorem Ipsum}  \\ \hline 
+        \bs{scriptsize} & \scriptsize{Lorem Ipsum} \\ \hline
+        \bs{footnotesize} & \footnotesize Lorem Ipsum \\ \hline
+        \bs{small} & \small Lorem Ipsum\\ \hline
+        \bs{normalsize} & \normalsize Lorem Ipsum\\ \hline
+        \bs{large} & \large Lorem Ipsum \\ \hline
+        \bs{Large} & \Large Lorem Ipsum \\ \hline
+        \bs{LARGE} & \LARGE Lorem Ipsum \\ \hline
+        \bs{huge} & \huge Lorem Ipsum \\ \hline
+        \bs{Huge} & \Huge Lorem Ipsum  \\ \hline
+    \end{tabular}
+    \label{tab:font_size}
+\end{table}
+The sizing is gonna be active for the duration of the line you are typing. \footnotesize This text is therefor gonna be foot note size until i change it back using \bs{normalsize}. \normalsize
+
+It is therefor not enough to make a line change by pressing enter or using the \textbackslash\textbackslash line break. \\
+
+\myblock{
+    {\large\textbf{Examples:}} \\
+    \begin{multicols}{2}
+    \noindent  % No indentation for the first line
+
+
+    \vspace{0.5em}  % Add vertical space for better aesthetics
+    \textbf{Setup:} \\
+    \bs{documentclass[18pt]\{article\}}
+
+    \vspace{1em}  % Additional space below the box
+    \textbf{Output:} \\
+    \fbox{\begin{minipage}{\linewidth}
+        {\fontsize{18}{15}\selectfont This command sets up a document with a font size of 12pt.}
+    \end{minipage}}
+    \end{multicols} % Example for \documentclass[FONT-SIZE]{article}
+    \begin{multicols}{2}
+    \noindent
+
+    \vspace{0.5em}
+    \textbf{Setup:} \\
+    \bs{tiny}
+
+    \vspace{0.5em}
+    \textbf{Output:} \\
+    \fbox{\begin{minipage}{\linewidth}
+        \tiny This text is using the tiny command
+    \end{minipage}}
+    \end{multicols} % Example for \tiny command
+} % Example cases for font-size
+
+ % Section about font size and how to change it throughout your document and set the font size from the start
+\subsubsection{Family}
+The font-family is the type of font you use in your \LaTeX document. The standard font-family for a \LaTeX document is \textit{Computer Modern Typeface Family}. 
+This includes different options for serif, sans serif and monospaced (Typewriter). You can switch between these throughout your document by using the following commands
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \bs{textrm} & \textrm{Lorem Ipsum} \\ \hline
+        \bs{textsf} & \textsf{Lorem Ipsum} \\ \hline
+        \bs{texttt} & \texttt{Lorem Ipsum} \\ \hline
+    \end{tabular}
+    \label{tab:font_family}
+\end{table} % Table for different basic font-family
+
+If you want to see more fonts you can check under the section  \hyperref[secc:font-family-sheet]{Miscellaneous and font-family}
+
+When you have to use another font, as one shown under the section Miscellaneous, you have to import the "font package name" by implementing \bs{usepackage\{\textit{Font-Package-Name}\}}.
+This allows you to use this font throughout your document.
+
+If your otherwise just want to use a font in your text and not through out the whole document, you can use the code \bs{fontfamily\{\textit{Font-Code}\}}\bs{selectfont}
+The first part of this code is to choose the font you want, where you have to insert the Font-Code as seen in the table in section \ref{tab:Big_Font_Family}.
+The second part is then sets the font, this means that whitout the \bs{selectfont} the font will not be set. If you only want the font change for a specific part
+of your text. you can do that the following way: \{\bs{usepackage\{\textit{Font-Package-Name}\}}\textit{The Text you want to be affected by the font}\} \\
+
+{\large\textbf{Examples:}}
+\begin{multicols}{2}
+    \noindent
+    \vspace{0.5em}
+    \textbf{Setup:} \\
+    \bs{usepackage}\{\textit{lmodern}\}
+    \vspace{1em}
+
+    \noindent
+    \vspace{0.5em}
+    \textbf{Output:} \\
+    \fbox{\begin{minipage}{\linewidth}
+        {\fontfamily{lmodern}\selectfont This Commands makes your document use the \textit{Latin Modern} font-family}
+    \end{minipage}}
+    \vspace{1em}
+
+\end{multicols}
+
+% Section about font family and how to change it in the document
+\subsubsection{Styles}
+There are some basic styles that we are used to having available to us in the text editors we are using on a normal basis like word and notepad.
+The most basic of these are \textit{Italic}, \textbf{Bold}, and \underline{Underline}. 
+
+To use these you have the following three commands
+
+\begin{align*}
+    \begin{tabular}{|c|c|} \hline
+       \bs{textit} & \textit{This is Italic} \\ \hline
+       \bs{textbf} & \textbf{This is Bold} \\ \hline
+       \bs{underline} & \underline{This is underlined} \\ \hline
+    \end{tabular}
+\end{align*}
+If you want to find more examples of way to style your text in \LaTeX you can check under Miscellaneous and \hyperref[secc:font-style-sheet]{font-style}
+
+\subsection{Images}
+\subsection{Lists}
+
+\newpage
+
+\section{Mathematics}
+\subsection{Operators}
+\subsection{Symbols}
+\subsection{Tables}
+\subsection{Graphs}
+\newpage
+
+\section{Algorithm}
+\subsection{Pseudocode}
+\subsection{Tree}
+\newpage
+
+\section{References Library}
+\subsection{Setup}
+\subsection{Use}
+
+\section{Page Setup}
+\subsection{Front Page}
+\subsection{Table of Content}
+\subsection{Columns}
+\subsection{Header and Footer}
+\newpage
+
+\section{Miscellaneous}
+\subsection{Emojies}
+\subsection{Custom Commands}
+\subsection{Font}
+\myblock{
+    {\large\textbf{Font-Family}}
+    \input{TexFiles/Font-Family Sheet.tex}
+    \label{secc:font-family-sheet}
+}
+\myblock{
+    {\large\textbf{Font-Style}}
+    \input{TexFiles/Font-Style Sheet.tex}
+    \label{secc:font-style-sheet}
+}
+
+\newpage
+
+\section{Error Messages}
+
+\end{document}
