@@ -2,11 +2,13 @@
 \usepackage{tikzsymbols} % For inserting CoffeeCup
 \usepackage[hidelinks]{hyperref} % For making hyperlinks betwwen table of contents and sections; [hidelinks] - makes the link not standout
 \usepackage{float} % Allow the use of [h]
-\usepackage{amsmath}
+\usepackage{amsmath} % For basic math operations
 
 % For images and manipulation thereof
-\usepackage{graphicx}
-\graphicspath{Images/.}
+\usepackage{graphicx} % Basic image import and manipulation 
+\graphicspath{Images/}
+\usepackage{wrapfig} % For allowing images to be wrapped around text
+
 
 % For modifying tables
 \usepackage[table]{xcolor} % Allows the coloring of tables
@@ -17,7 +19,7 @@
 \setlength{\columnwidth}{0.45\textwidth} % Width of the columns
 
 
-% Opsætning af margner
+% Setup for margens
 \usepackage{geometry}
  \geometry{
  a4paper,
@@ -32,7 +34,7 @@
 \newcommand{\myblock}{} % for making custom blocks 
 
 
-
+% Creates the title for the document
 \title{\LaTeX - Cheat Sheet \\
         \large A collection of useful latex codes for Computer Science \\
         Version: 0.1 \\
@@ -76,8 +78,24 @@ This section will have focus on some basic styling and layout in latex, such as 
 Writing text in \LaTeX in the most basic form is just as easy as one might expect. You just have to write in the editor. 
 But there are some basic functions we can add to this, to make things in the text stand more out. 
 
-It is these function we will learn about in the following section.
-\subsubsection{Size}
+It is these function we will learn about in the following section. \\
+The following section covers these usepackages and commands (Click on any part to get to the choosen subject): \\
+
+\vspace{1.5em}
+\noindent{
+{\large\textbf{Usepackage mentioned in this section:}}}
+\begin{table}[H]
+    \noindent
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        \rowcolor{gray!30}
+        Usepackage implementation & What the usepackage does \\ \hline
+        \hyperref[subsubsec:text_family]{\bs{usepackage\{\textit{FONT-PACKAGE-NAME}\}}} & Used to import font for your document \\ \hline
+    \end{tabular}
+\end{table} % Table over covered usepackage for the text section
+
+
+\subsubsection{Size}\label{subsubsec:text_size}
 To set the font-size for your document you have to change the \bs{documentclass\{\ldots\}} to include the following \bs{documentclass[\textit{FONT-SIZE}]\{\ldots\}}. When declaring the font-size you have to use the unit "pt" which stands for points (A typography unit).\\
 
 
@@ -104,39 +122,37 @@ The sizing is gonna be active for the duration of the line you are typing. \foot
 
 It is therefor not enough to make a line change by pressing enter or using the \textbackslash\textbackslash line break. \\
 
-\myblock{
-    {\large\textbf{Examples:}} \\
-    \begin{multicols}{2}
-    \noindent  % No indentation for the first line
+{\large\textbf{Examples:}} \\
+\begin{multicols}{2}
+\noindent  % No indentation for the first line
+\vspace{0.5em}  % Add vertical space for better aesthetics
+\textbf{Setup:} \\
+\bs{documentclass[18pt]\{article\}}
 
+\vspace{1.5em}  % Additional space below the box
+\textbf{Output:} \\
+\fbox{\begin{minipage}{\linewidth}
+    {\fontsize{18}{15}\selectfont This command sets up a document with a font size of 12pt.}
+\end{minipage}}
+\end{multicols} % Example for \documentclass[FONT-SIZE]{article}
 
-    \vspace{0.5em}  % Add vertical space for better aesthetics
-    \textbf{Setup:} \\
-    \bs{documentclass[18pt]\{article\}}
+\begin{multicols}{2}
+\noindent
 
-    \vspace{1em}  % Additional space below the box
-    \textbf{Output:} \\
-    \fbox{\begin{minipage}{\linewidth}
-        {\fontsize{18}{15}\selectfont This command sets up a document with a font size of 12pt.}
-    \end{minipage}}
-    \end{multicols} % Example for \documentclass[FONT-SIZE]{article}
-    \begin{multicols}{2}
-    \noindent
+\vspace{0.5em}
+\textbf{Setup:} \\
+\bs{tiny}
 
-    \vspace{0.5em}
-    \textbf{Setup:} \\
-    \bs{tiny}
+\vspace{0.5em}
+\textbf{Output:} \\
+\fbox{\begin{minipage}{\linewidth}
+    \tiny This text is using the tiny command
+\end{minipage}}
+\end{multicols} % Example for \tiny command
 
-    \vspace{0.5em}
-    \textbf{Output:} \\
-    \fbox{\begin{minipage}{\linewidth}
-        \tiny This text is using the tiny command
-    \end{minipage}}
-    \end{multicols} % Example for \tiny command
-} % Example cases for font-size
 
  % Section about font size and how to change it throughout your document and set the font size from the start
-\subsubsection{Family}
+\subsubsection{Family}\label{subsubsec:text_family}
 The font-family is the type of font you use in your \LaTeX document. The standard font-family for a \LaTeX document is \textit{Computer Modern Typeface Family}. 
 This includes different options for serif, sans serif and monospaced (Typewriter). You can switch between these throughout your document by using the following commands
 
@@ -180,7 +196,7 @@ of your text. you can do that the following way: \{\bs{usepackage\{\textit{Font-
 \end{multicols}
 
 % Section about font family and how to change it in the document
-\subsubsection{Styles}
+\subsubsection{Styles}\label{subsubsec:text_styles}
 There are some basic styles that we are used to having available to us in the text editors we are using on a normal basis like word and notepad.
 The most basic of these are \textit{Italic}, \textbf{Bold}, and \underline{Underline}. 
 
@@ -196,15 +212,31 @@ To use these you have the following three commands
 If you want to find more examples of way to style your text in \LaTeX you can check under Miscellaneous and \hyperref[secc:font-style-sheet]{font-style}
 
 \subsection{Images}
+The following section covers these usepackages and commands (Click on any part to get to the choosen subject): \\
+
+\vspace{1.5em}
+\noindent{
+{\large\textbf{Usepackage mentioned in this section:}}}
+\begin{table}[H]
+    \noindent
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        \rowcolor{gray!30}
+        Usepackage implementation & What the usepackage does \\ \hline
+        \hyperref[tab:image_basic]{\bs{usepackage\{\textit{graphicx}\}}} & Used to add and manipulate images \\ \hline
+        \hyperref[secc:image_wrapping]{\bs{usepackage\{wrapfig\}}} & Used to allow text wrapping around images \\ \hline 
+    \end{tabular}
+\end{table} % Table over covered usepackage for the text section
+
 When working with images there are a few basic usepackages we want to have imported at the beginning of our document.
 
-The following list covers the usepackages and commands: \\
-\begin{table}[H]
+The following list covers the basic usepackages and commands: \\
+\begin{table}[H] \label{tab:image_basic}
     \centering
     \begin{tabular}{|c|c|} \hline
         \bs{usepackage\{graphicx\}} & Allows us to insert and manipulate images in our document \\ \hline 
-        \bs{graphicspath\{ \{ \textit{PATH-FOR-IMAGE-FOLDER} \} \}} & Informs of the folder where your images is stored \\ \hline
-        \bs{includegraphics\{ \textit{NAME-OF-IMAGE} \}} & Inserts an image into your document \\ \hline
+        \bs{graphicspath\{\textit{PATH-FOR-IMAGE-FOLDER}\}} & Informs of the folder where your images is stored \\ \hline
+        \bs{includegraphics\{\textit{NAME-OF-IMAGE}\}} & Inserts an image into your document \\ \hline
     \end{tabular}
 \end{table} % Table for the three most basic image commands.
 
@@ -216,9 +248,9 @@ the image look better.
 \subsubsection{Resizing and Rotating}
 If we want to change the size or orientation of an image we can pass in different settings in the format as shown bellow
 
-\centering
+\begin{center}
 \bs{includegraphics[\textit{FORMAT-SETTINGS}]\{ \ldots \} } \\
-\raggedright
+\end{center}
 
 This means that you have to import the image into the document as normal but add the [\ldots] with your modifiers
 before the image you're importing. 
@@ -233,7 +265,7 @@ There are "three" settings we can use with our image:
         \rowcolor{gray!30}
         scale=XXX & Scales the image XXX-times \\ \hline
     \end{tabular}
-\end{table}
+\end{table} % the three format-settings
 
 The gray box is not counted, since it has the same effect as the width, and height setting.
 You can combine all these settings on the same image, by separating them with a ','. The values we give to the settings 
@@ -265,7 +297,7 @@ look into the positioning of the image. To do this we will have to use an enviro
     \begin{figure}[H]
         \includegraphics[scale=.1]{Images/Programming.png}
     \end{figure}
-\end{multicols}
+\end{multicols} % Example of float and scale
 Here we use the \textit{figure} environment to control the positioning of the image. The positioning is 
 controlled by the \textit{float-value}. There are six different parameters that we can use to control the positioning:
 
@@ -282,12 +314,66 @@ controlled by the \textit{float-value}. There are six different parameters that 
         H & Places the float at precisely the location in the \LaTeX source code. This requires the \textit{float} package,
         and though may cause problems occasionally. This is in a way the same as using h! \\ \hline
     \end{tabular}
-\end{table}
+\end{table} % Table of float parameters
 
 Note that the '!' can be used in combination with the rest of the parameters, but not H.
 
-\subsubsection{Wrapping of text}
+\subsubsection{Wrapping of text} \label{secc:image_wrapping}
+It's also possible to wrap text around a picture. To do this we will use the "wrapfigure" environment. 
+To be able to use this you have to implement the usepackage "wrapfig". \\
 
+
+
+\vspace{0.75em}
+{\large\textbf{Setup:}} \\
+\bs{begin\{wrapfigure\}[LINES]\{\textit{PLACEMENT-PARRAMETER}\}[OVERHANG]\{\textit{WIDTH}\}} \\
+    \bs{centering} \\
+    \bs{includegraphic[\textit{SETTING-PARAMETERS}]\{\textit{IMAGE-NAME}\}}
+\bs{end\{wrapfigure\}} \\
+
+
+\vspace{1.25em}
+
+{\large\textbf{Output:}}
+
+
+\begin{wrapfigure}[3]{l}{0.25\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/Programming.png}
+    \label{fig:image_wrap}
+\end{wrapfigure} % Wrapfig eksample with three narrow lines
+
+This is a blank text to show to possibilities of wrapping a text around an image. This text has zero actual meaning, and is just trying to fill 
+as much space as possible. 
+
+
+\vspace{4\baselineskip}
+Note that the wrapfig environment takes 4 different input parameters. The LINE parameter refers to the number of lines there should be narrowed besides the picture. 
+In our example above we have set this to be 3, and as you can see, we have three lines that has been narrowed.
+
+The next on is the placement of the image. Here we have 4 different values: \\
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        \rowcolor{gray!30}
+        Position parameter & Placement of image \\ \hline
+        r & Right side of the text \\ \hline
+        l & Left side of the text \\ \hline 
+        i & Inside edge-near the binding (in a \textit{twoside} document) \\ \hline
+        o & Outside edge-far from the binding \\ \hline
+    \end{tabular}
+\end{table} % Table of the diffrent placements using a wrapfig
+Each of these  does also have the equivalent letter in the uppercase version. When using the uppercase you allow the image to float, thus the lowercase version
+means to place the image \textit{exactly} here.
+
+The next parameter is the overhang. This is a fine-tuning of the image placement and can be used to give an image some "overhang" in the text area. 
+
+The last parameter is the width of the width of the "box" given to the image inside the environment. Because this only refers to the box given to the image, and not the image itself.
+It's good practice to let the image inside the wrapfig just be a tiny bit smaller than the wrapfig environment. Thus you make sure the text and image are not overlapping, and that you
+get a small white space between image and text.
+
+\subsubsection{Captioning, labelling and referencing}
 \subsection{Lists}
 
 \newpage
