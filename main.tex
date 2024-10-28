@@ -30,7 +30,7 @@
 
  
 % Custom commands
-\newcommand{\bs}[1]{\textbackslash\text{#1}} % To use \bs{} for writing out commands
+\newcommand{\bs}[1]{\textbackslash{}#1} % To use \bs{} for writing out commands
 \newcommand{\myblock}{} % for making custom blocks 
 
 
@@ -278,25 +278,29 @@ look into the positioning of the image. To do this we will have to use an enviro
 
 \begin{multicols}{2}
     \noindent
-    \vspace{0.5em}
-    {\large\textbf{Setup:}} \\
-    \textit{Example} \\
-    \bs{begin\{figure\}[\textit{float-value}]}
-    \bs{includegraphics[\textit{setting=value}]\{\textit{IMAGE-NAME}\}} \\
-    \bs{end\{figure\}}
+    \begin{minipage}{0.70\linewidth}
+        \noindent
+        \vspace{0.5em}
+        {\large\textbf{Setup:}} \\
+        \textit{Example} \\
+        \bs{begin\{figure\}[\textit{float-value}]} \\
+        \bs{includegraphics[\textit{setting=value}]\{\textit{IMAGE-NAME}\}} \\
+        \bs{end\{figure\}} \\[1em] % Add some vertical space for better readability
 
-    \textit{Entered} \\
-    \bs{begin\{figure\}[\textit{H}]}
-    \bs{includegraphics[scale=.1]\{Images/Programming.png\}} 
-    \bs{end\{figure\}}
+        \textit{Entered} \\
+        \bs{begin\{figure\}[\textit{H}]} \\
+        \bs{includegraphics[scale=.1]\{Images/Programming.png\}} \\
+        \bs{end\{figure\}}
+    \end{minipage}
     \columnbreak
-
-    \noindent
-    \vspace{0.5em}
-    {\large\textbf{Output:}}
-    \begin{figure}[H]
-        \includegraphics[scale=.1]{Images/Programming.png}
-    \end{figure}
+   
+        \noindent
+        {\large\textbf{Output:}} \\
+        \noindent
+        \begin{figure}[H]
+            \includegraphics[scale=0.05]{Images/Programming.png} % Adjust scale as needed
+            \label{fig:programming}
+        \end{figure}
 \end{multicols} % Example of float and scale
 Here we use the \textit{figure} environment to control the positioning of the image. The positioning is 
 controlled by the \textit{float-value}. There are six different parameters that we can use to control the positioning:
@@ -370,10 +374,89 @@ means to place the image \textit{exactly} here.
 The next parameter is the overhang. This is a fine-tuning of the image placement and can be used to give an image some "overhang" in the text area. 
 
 The last parameter is the width of the width of the "box" given to the image inside the environment. Because this only refers to the box given to the image, and not the image itself.
-It's good practice to let the image inside the wrapfig just be a tiny bit smaller than the wrapfig environment. Thus you make sure the text and image are not overlapping, and that you
+It's good practice to let the image inside the wrapfig just be a tiny bit smaller than the wrapfig environment. That is how you make sure the text and image are not overlapping, and that you
 get a small white space between image and text.
 
 \subsubsection{Captioning, labelling and referencing}
+When you have inserted a figure, image or anything else into our document we want to give the reader a small explanation to what
+it is this figure resembles. To do this be use the code \bs{caption\{\textit{IMAGE-CAPTION}\}}.
+We normally place the caption inside an environment with the figure we want to caption. 
+
+\begin{multicols}{2}
+    \vspace{0.5em}
+    \noindent
+    \textbf{Setup:} \\
+    \bs{begin\{figure\}} \\
+    \bs{includegraphic\{\textit{IMAGE-NAME}\}} \\
+    \bs{caption\{Image of Computer\}} \\
+    \bs{end\{figure\}} \\
+    \columnbreak
+
+    \vspace{0.5em}
+    \noindent
+    \textbf{Output:}
+    \begin{figure}[H]
+        \includegraphics[scale=0.1]{Images/Programming.png}
+        \caption{Image of Computer}
+        \label{fig:image_of_computer_caption}
+    \end{figure}
+\end{multicols}
+
+
+As you can see we have the caption written out below the image along with \textit{Figure 1}.
+The reason of the figure being numbered as number one, is because it is the first figure being captioned. \\
+
+You also have a function in latex to label your figures and images. When doing this, you use the \bs{label\{\textit{CAPTION-TITLE}\}}
+When we label our images and figures, it is not possible to see what you write in the label.
+But the label allows you to reference a figure later in your document. You can choose your own system for labeling, but if you don't know what to do I have inserted
+a table down below here, for how I in generally label my figures: \\
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!30}
+        How I label & What figure \\ 
+        \hline
+        img:\textit{IMAGE\_DESCRIPTION} & Image \\ 
+        \hline
+        fig:\textit{FIGURE\_DESCRIPTION} & Figure \\ 
+        \hline
+        secc:\textit{SECTION\_DESCRIPTION} & Section \\ 
+        \hline
+        tab:\textit{TABLE\_DESCRIPTION} & Table \\ 
+        \hline
+        gra:\textit{GRAPH\_DESCRIPTION} & Graph \\ 
+        \hline
+    \end{tabular}
+    \caption{Labeling Guide for Figures and Tables}
+    \label{tab:caption_labels}
+\end{table}
+
+
+By using this system I know what it is my label is referring to, whether it is a figure, image, section or table. And this is useful 
+when you want the reference a thing from your document. I always split the label up with '\_' if I use more words. This is just personal preference, and you can make a
+label with spaces in it if you would like.
+
+If you want to reference a figure you have a few different options to use, each having its own unique advantages
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|p{0.50\linewidth}|}
+        \hline
+        \rowcolor{gray!30}
+        Command & Usage \\
+        \hline
+        \bs{ref\{\textit{FIG-NAME}\}} & Used to reference the figure number as shown below in the caption \\
+        \hline
+        \bs{pageref\{\textit{FIG-NAME}\}} & Used to reference the page number a figure is on \\
+        \hline
+        \bs{hyperref\{\textit{FIG-NAME}\}\{\textit{TEXT-TO-BE-SHOWN}\}} & Used to create a hyperlink between placement of the reference
+         and the figure \\
+        \hline
+    \end{tabular}
+\end{table}
+
 \subsection{Lists}
 
 \newpage
