@@ -1,0 +1,5 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QWhen doing this, you use the labelCAPTION-TITLE When we label our images and figures, it is not possible to see what you write in the label.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qgray!30 Command Usage refFIG-NAME Used to reference the figure number as shown below in the caption pagerefFIG-NAME Used to reference the page number a figure is on hyperrefFIG-NAMETEXT-TO-BE-SHOWN Used to create a hyperlink between placement of the reference and the figure\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qgray!30 How I label What figure img:IMAGEDESCRIPTION Image fig:FIGUREDESCRIPTION Figure secc:SECTIONDESCRIPTION Section tab:TABLEDESCRIPTION Table gra:GRAPHDESCRIPTION Graph Labeling Guide for Figures and Tables\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QNow that we know how to insert images into our document using the includegraphics command, we will look into the positioning of the image.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QWe use the includegraphics to import the picture: This is the most basic way of inserting an image.\\E$"}
