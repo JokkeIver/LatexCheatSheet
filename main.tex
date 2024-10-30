@@ -457,18 +457,46 @@ If you want to reference a figure you have a few different options to use, each 
     \end{tabular}
 \end{table}
 
-This is to test the change
 
 \subsection{Lists}
 
+\subsection{Environments}
 \newpage
 
-% \section{Mathematics}
-% \subsection{Operators}
-% \subsection{Symbols}
-% \subsection{Tables}
-% \subsection{Graphs}
-% \newpage
+\section{Mathematics}
+We will in this section look into different ways to do different mathematical methods such as symbols, operators, tables, graph and so on.
+
+\subsection{Math Environment}
+There are two groups of math Environment to use in a \LaTeX document. One for math inline with the text, and one for display.
+There are three different ways of writing math from any of these two groups
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        \rowcolor{gray!30}
+        Command & Group \\ \hline
+        \$\textit{MATH}\$ & Inline \\ \hline
+        \bs{(}\textit{MATH}\bs{)} & Inline \\ \hline
+        \bs{begin\{math\}}\textit{MATH}\bs{end\{math\}} & Inline \\ \hline
+        \bs{[\textit{MATH}}\bs{]} & Display \\ \hline
+        \bs{begin\{displaymath\}} \textit{MATH} \bs{end\{displaymath\}} & Display \\ \hline
+        \bs{begin\{equation\}} \textit{MATH} \bs{end\{equation\}} & Display \\ \hline
+    \end{tabular}
+    \label{tab:math_simple_operators}
+\end{table}
+This equation $E=MC^2$ is an example of an inline math equation.
+\[E=MC^2\]
+This is an example of a display equation.
+
+These commands as stated in the table above will do precisely the same as long as they are in the same group. Therefor it is up to you which of these commands
+you want to use, and what you think is going to make your \LaTeX code prettier and easier to read. \\
+
+These enviroments is the foundation of writing math in \LaTeX, since it is not possible to write any math symbols, operators or anything outside these.
+\subsection{Operators}
+\subsection{Symbols}
+\subsection{Tables}
+\subsection{Graphs}
+\newpage
 
 % \section{Algorithm}
 % \subsection{Pseudocode}
@@ -488,23 +516,21 @@ This is to test the change
 
 \section{Miscellaneous}
 \subsection{Font}
-\myblock{
+
     \subsubsection{Font-Family}
     \input{TexFiles/Font-Family Sheet.tex}
     \label{secc:font-family-sheet}
-    }
-\myblock{
+
     \subsubsection{Font-Styles}
     \input{TexFiles/Font-Style Sheet.tex}
     \label{secc:font-style-sheet}
-}
-
 \subsection{Image}
 \myblock{
-    \subsection{Image Units}
+    \subsubsection{Image Units}
     \input{TexFiles/Image-Units.tex}
     \label{secc:Image-Units}
 }
+    
 
 % \subsection{Emojies}
 % \subsection{Custom Commands}
