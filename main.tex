@@ -810,14 +810,27 @@ If you also want your list to have more nesting than the four originals levels y
 
 So to show how the different formats look, i will write put the number five, using each format here:
 
+\newcounter{mycounter}
+\setcounter{mycounter}{5}
 \begin{itemize}
-    \item \verb|\arabic{foo}| produces \arabic{foo}
-    \item \verb|\roman{foo}| produces \roman{foo} 
-    \item \verb|\Roman{foo}| produces \Roman{foo}
-    \item \verb|\Alph{foo}| produces \Alph{foo}
-    \item \verb|\alph{foo}| produces \alph{foo}
+    \item \verb|\arabic{mycounter}| produces \arabic{mycounter}
+    \item \verb|\roman{mycounter}| produces \roman{mycounter} 
+    \item \verb|\Roman{mycounter}| produces \Roman{mycounter}
+    \item \verb|\Alph{mycounter}| produces \Alph{mycounter}
+    \item \verb|\alph{mycounter}| produces \alph{mycounter}
 \end{itemize}
+
+the \textit{mycounter} parameter i have given each format label is a custom counter, which you have to create for this to work, 
+that represents the number five in my case.
+
+To create this counter you use the following command
+\begin{verbatim}
+    \newcouonter{COUNTER-NAME}
+    \setcounter{COUNTER-NAME}{#}
+\end{verbatim}
     
+\subsubsection{Customizing layout}
+
 
 \newpage
 % \section{Mathematics}
