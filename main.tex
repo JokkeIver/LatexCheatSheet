@@ -1,17 +1,24 @@
 \documentclass{article}
 \usepackage{tikzsymbols} % For inserting CoffeeCup
-\usepackage[hidelinks]{hyperref} % For making hyperlinks betwwen table of contents and sections; [hidelinks] - makes the link not standout
+\usepackage[hidelinks]{hyperref} % For making hyperlinks between table of contents and sections; [hidelinks] - makes the link not standout
 \usepackage{float} % Allow the use of [h]
+
+ % Math Packages 
 \usepackage{amsmath} % For basic math operations
+\usepackage{amssymb}
 
 % For images and manipulation thereof
 \usepackage{graphicx} % Basic image import and manipulation 
 \graphicspath{Images/}
 \usepackage{wrapfig} % For allowing images to be wrapped around text
 
+%Package for list
+\usepackage{listings}
+
 
 % For modifying tables
 \usepackage[table]{xcolor} % Allows the coloring of tables
+
 
 % Control of the multi columns setup
 \usepackage{multicol} % Used for making multicolumns
@@ -43,6 +50,7 @@
 \author{Joakim Iversen}
 \date{}
 
+% Setup for the titlepage
 \usepackage{titling}
 \renewcommand\maketitlehooka{\null\mbox{}\vfill}
 \renewcommand\maketitlehookd{\vfill\null}
@@ -567,6 +575,129 @@ You will be able to see an example here:
 %endregion % Example of a description list
 
 \subsubsection{Changing the label of lists}
+By using the label from the description list, we now have opened up for the 
+possibility of changing the label of a numbered list or the bullet list.
+
+This is done by adding the a parameter to the \bs{item} inside the [ ].
+
+\begin{center}
+    \bs{item}[\textit{LABEL}]
+\end{center}
+
+An example of different ways to use this \\
+
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input:} \\
+        \bs{begin\{itemize\}} \\
+        \bs{item} This is a normal point \\
+        \bs{item} This is a second normal point \\
+        \bs{item}[] This is an empty label \\
+        \bs{item}[!] You can use symbols from your keyboard \\
+        \bs{item}[\bs{blacksquare}] You can also use symbols \\
+        \bs{item}[NOTE] This has no bullet
+        \bs{end\{enumerate\}}
+    \end{minipage}
+
+    \begin{minipage}{\linewidth}
+        \textbf{Output:} \\
+        \begin{itemize}
+            \item This is a normal point 
+            \item This is a second normal point 
+            \item [] This is an empty label 
+            \item [!] You can use symbols from your keyboard
+            \item [$\blacksquare$] You can also use symbols
+            \item [NOTE] This has no bullet
+        \end{itemize}
+    \end{minipage}
+\end{multicols}
+
+This can also be done in the enumerate environment
+
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input:} \\
+        \bs{begin\{enumerate\}} \\
+        \bs{item} This is a normal point \\
+        \bs{item} This is a second normal point \\
+        \bs{item}[] This is an empty label \\
+        \bs{item}[!] You can use symbols from your keyboard \\
+        \bs{item}[\bs{blacksquare}] You can also use symbols \\
+        \bs{item}[NOTE] This has no bullet
+        \bs{end\{enumerate\}}
+    \end{minipage}
+
+    \begin{minipage}{\linewidth}
+        \textbf{Output:} \\
+        \begin{enumerate}
+            \item This is a normal point 
+            \item This is a second normal point 
+            \item [] This is an empty label 
+            \item [!] You can use symbols from your keyboard
+            \item [$\blacksquare$] You can also use symbols
+            \item [NOTE] This has no bullet
+        \end{enumerate}
+    \end{minipage}
+\end{multicols}
+
+\subsubsection{Nested lists}
+It's possible to nest a list inside a list. Doing this will automatically updated
+how the "bullet" is written, depending on which environment you are using and
+the level of nesting you are at
+
+The different levels for itemize:
+\begin{multicols}{2}
+\begin{minipage}{\linewidth}
+\textbf{Input:} \\
+\begin{verbatim}
+\begin{itemize/enumerate}
+\item Level 1 
+    \begin{itemize/enumerate} 
+    \item Level 2 
+        \begin{itemize/enumerate} 
+        \item Level 3 
+            \begin{itemize/enumerate}
+            \item Level 4 
+            \end{itemize/enumerate} 
+        \end{itemize/enumerate} 
+    \end{itemize/enumerate} 
+\item Back to Level 1 
+\end{itemize/enumerate} 
+\end{verbatim}
+\end{minipage}
+
+    \begin{minipage}{\linewidth}
+        \textbf{Output:} \\
+        \begin{itemize}
+            \item Level 1
+            \begin{itemize}
+                \item Level 2
+                \begin{itemize}
+                    \item Level 3
+                    \begin{itemize}
+                        \item Level 4
+                    \end{itemize}
+                \end{itemize}
+            \end{itemize}
+            \item Back to Level 1
+        \end{itemize}
+    \end{minipage}
+\end{multicols}
+
+For an enumerate list it would look like this:
+\begin{enumerate}
+    \item Level 1
+    \begin{enumerate}
+        \item Level 2
+        \begin{enumerate}
+            \item Level 3
+            \begin{enumerate}
+                \item Level 4
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \item Back to Level 1
+\end{enumerate}
 
 \newpage
 
