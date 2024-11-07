@@ -462,7 +462,112 @@ If you want to reference a figure you have a few different options to use, each 
 \subsection{Environments}
 
 \subsection{Lists}
-In \LaTeX it's possible for us to create lists of different styles. Whether you want to create a bullet list, numbered list of something completely different.
+In \LaTeX it's possible for us to create lists of different styles. Whether you want to create a bullet list, numbered list of something completely different 
+we use these three basic environments:
+
+\begin{itemize}
+    \item itemize environment $\rightarrow$ creating a bullet list (unordered)
+    \item enumerate environment $\rightarrow$ creating a numbered list (ordered)
+    \item description environment $\rightarrow$ creating a list of descriptions 
+\end{itemize}
+
+The list is a powerful tool, since there are many ways for you to configure and customize how they are
+set up. For that reason this section is going to be quite large. 
+
+\subsubsection{The basic list}
+\textbf{The \textit{Itemize} environment} \\
+The basic list you can create is a bullet list. To create a bullet list you will use the itemize environment.
+The itemize takes the same entry as all the other lists, the \bs{item} command.
+
+The itemize list will be an unordered bullet list an would be implemented in the 
+following way
+%region
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input:} \\
+        \bs{begin\{itemize\}} \\
+        \bs{item} All list entries must start with \bs{item} \\
+        \bs{item} Each entry get's it's own bullet \\
+        \bs{end\{itemize\}}
+    \end{minipage}
+    
+    \begin{minipage}{\linewidth}
+        \textbf{Output: } \\
+        \begin{itemize}
+            \item All list entries must start with \bs{item}
+            \item Each entry get's it's own bullet
+        \end{itemize}
+    \end{minipage}
+\end{multicols}
+%endregion %Example of a itemize list
+
+\noindent{\textbf{The \textit{enumerate} environment}} \\
+\indent The numerate environment is used to make a ordered numbered list.
+
+It uses the same entry command as in the itemize environment \bs{item}. But 
+this will proceed to make a number that increases for each newly added entry
+to the list.
+
+The standard enumerate environment will start at the number $1$, but note that 
+this can be changed/controlled by the use of the \textit{enumitem package}.
+
+%region
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input:} \\
+        \bs{begin\{enumerate\}} \\
+        \bs{item} Items are automatically numbered \\
+        \bs{item} Each use of the enumerate environment will make a new list 
+                    with numbers starting from 1 \\
+        \bs{end\{enumerate\}}
+    \end{minipage}
+
+    \begin{minipage}{\linewidth}
+        \textbf{Output:} \\
+        \begin{enumerate}
+            \item Items are automatically numbered
+            \item Each use of the enumerate enviroment will make a new list  
+                    with numbers starting from 1
+        \end{enumerate}
+    \end{minipage}
+\end{multicols}
+%endregion % Example of enumerate list
+
+\noindent{\textbf{The \textit{description} environment}} \\
+\indent The description environment does, as the two other, make use of the \bs{item}
+command to make the points in the list. The difference here lays in that you after the 
+\textit{item} command in '[ ]' can write a label to be put in front of the text at
+that point. \\ 
+The syntax for this looks like this:
+\begin{center}
+    \bs{item}[label-text] Text of your description goes here.
+\end{center}
+
+You will be able to see an example here:
+%region
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input: } \\
+        \bs{begin\{description\}} \\
+            \bs{item} This is en entry \underline{WITHOUT} a label \\
+            \bs{item}[Something short] A short one-line description\\
+            \bs{item}[Somehting long] This is a much longer description for what is possible with a description environment. This is mostly so you can see, what it would look like if you were to have a very long description within your list. \\
+        \bs{end}\{description\}
+    \end{minipage}
+
+    \begin{minipage}{\linewidth}
+        \textbf{Output: } \\
+        \begin{description}
+            \item This is an entry \underline{WITHOUT} a label
+            \item[Something short] A short one-line description
+            \item[Something long] This is a much longer description for what is possible with a description environment. This is mostly so you can see, what it would look like if you were to have a very long description within your list.    
+        \end{description}
+    \end{minipage}
+\end{multicols}
+%endregion % Example of a description list
+
+\subsubsection{Changing the label of lists}
+
 \newpage
 
 % \section{Mathematics}
