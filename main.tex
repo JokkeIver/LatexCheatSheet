@@ -707,8 +707,119 @@ be able to create your own custom labels for the nested lists.
 
 If you mix the lists nested inside with different lists. The lists would choose
 the label that matches the level of nesting it is at.
-\newpage
 
+
+\subsubsection{Customizing lists}
+The true power of a lists comes when you begin to modify and customize them.
+To do this you can make use of the \textit{enumitem package}. This package is
+imported as standard and you can therefor just make use of it.
+
+We will start by how you can customize your list labels in general.
+
+The table bellow shows the \LaTeX commands that are being used for label-generation
+at each level for the \textit{itemize} and \textit{enumerate} lists:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|} \hline
+        \rowcolor{gray!30}
+        Level & \textit{Itemize} label command & \textit{Enumerate} label command \\ \hline
+        Level 1 & \bs{labelitemi} & \bs{labelenumi} \\ \hline
+        Level 2 & \bs{labelitemii} & \bs{labelenumii} \\ \hline
+        Level 3 & \bs{labelitemiii} & \bs{labelenumiii} \\ \hline
+        Level 4 & \bs{labelitemiv} & \bs{labelenumiv} \\ \hline
+    \end{tabular}
+    \caption{Table of label-generation}
+\end{table}
+
+Besides these the \textit{enumerate} environment also uses these four 
+counter variables, that keep track of the current label-value for each level:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}\hline
+        \rowcolor{gray!30}
+        Level & \textit{Enumerate} counter variable \\ \hline
+        Level 1 & enumi \\ \hline
+        Level 2 & enumii \\ \hline
+        Level 3 & enumiii \\ \hline
+        Level 4 & enumiv \\ \hline
+    \end{tabular}
+\end{table}
+
+
+Using the information from those two table you can begin to customize how your lists a labeled. We can make the enumerate list have numbers for all the levels of nested lists
+by doing this
+
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input:} \\
+        \begin{verbatim}
+\renewcommand{\labelenumii}
+{\arabic{enumi}.\arabic{enumii}} 
+
+\renewcommand{\labelenumiii}
+{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+
+\renewcommand{\labelenumiv}
+{\arabic{enumi}.\arabic{enumii}
+.\arabic{enumiii}.\arabic{enumiv}}
+        \end{verbatim}
+    \end{minipage}
+    \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}} 
+    \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+    \renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+
+    \begin{enumerate}
+        \item Level 1
+        \begin{enumerate}
+            \item Level 2
+            \begin{enumerate}
+                \item Level 3
+                \begin{enumerate}
+                    \item Level 4
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \begin{minipage}{\linewidth}
+        
+    \end{minipage}
+\end{multicols}
+
+You can see that the enumerate environment now labels each nested enumerate list only with numbers separated by '.' just like wrote in our \textit{renewcommand} command.
+Note that the counter-variables \textit{enumi, enumii, enumiii} and \textit{enumiv} are counter-variables that only can be applied to the enumerate environment.
+
+Note that in the last example we also used another command \textbf{\textit{\bs{arabic\{\}}}}. This explains how we want the number to be written.
+the \bs{arabic\{\}} command writes out the number using the \textit{arabic} alphabet (0-9). There are in general five different types of formats we can print out the \textit{counter-variable}
+in:
+\begin{itemize}
+    \item \bs{arabic\{\textit{Counter-Variable}\}}
+    \item \bs{roman\{\textit{Counter-Variable}\}}
+    \item \bs{Roman\{\textit{Counter-Variable}\}}
+    \item \bs{alph\{\textit{Counter-Variable}\}}
+    \item \bs{Alph\{\textit{Counter-Variable}\}}
+\end{itemize}
+
+If you also want your list to have more nesting than the four originals levels you can create custom counters by using the code
+\begin{center}
+    \begin{verbatim}
+    \newcounter{COUNTERTITLE}    
+    \setcounter{COUNTERTITLE}{#}
+    \end{verbatim}
+\end{center}
+
+So to show how the different formats look, i will write put the number five, using each format here:
+
+\begin{itemize}
+    \item \verb|\arabic{foo}| produces \arabic{foo}
+    \item \verb|\roman{foo}| produces \roman{foo} 
+    \item \verb|\Roman{foo}| produces \Roman{foo}
+    \item \verb|\Alph{foo}| produces \Alph{foo}
+    \item \verb|\alph{foo}| produces \alph{foo}
+\end{itemize}
+    
+
+\newpage
 % \section{Mathematics}
 % \subsection{Operators}
 % \subsection{Symbols}
