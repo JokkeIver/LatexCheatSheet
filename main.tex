@@ -19,9 +19,17 @@
 
 % For modifying tables
 \usepackage[table]{xcolor} % Allows the coloring of tables
+\usepackage{mdframed}
 
-% Custom List environment
-
+% Custom environments
+\newenvironment{highlightbox}[1] % Accepts 1 argument
+{
+    \begin{mdframed}[backgroundcolor=yellow!30, linecolor=orange]
+    \textbf{#1} \\
+}
+{
+    \end{mdframed}
+}
 
 
 
@@ -85,7 +93,6 @@ If you have suggestions for things to add, or stumble across anything that will 
 
 \section{Layout}
 This section will have focus on some basic styling and layout in latex, such as styling text, inserting images and how to make different types of lists. \\
-
 
 \subsection{Text}
 Writing text in \LaTeX in the most basic form is just as easy as one might expect. You just have to write in the editor. 
@@ -470,9 +477,54 @@ If you want to reference a figure you have a few different options to use, each 
     \end{tabular}
 \end{table}
 
-
-
 \subsection{Environments}
+In \LaTeX an environment is a block of code that starts and ends with \jbs{\textit{begin\{\}}} \jbs{\textit{end\{\}}}. The name of the environment is gonna be the text that is written between the curly brackets. So when you insert a picture you do it in the following way.
+
+\begin{verbatim}
+\begin{figure}
+    \includegraphics{...}
+\end{figure}
+\end{verbatim}
+
+Here you would say that the \jbs{includegraphics} command is inside the figure environment.
+
+\subsubsection{Custom environments}
+You can create custom environments by using the following syntax
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|} \hline
+        \rowcolor{gray!30}
+        Command \\ \hline
+        \jbs{newenvironment}{\textit{NAME}}{\textit{BEGIN-COMMANDS}}{\textit{EDN-COMMANDS}} \\ \hline
+    \end{tabular}
+\end{table} % Command for creating custom environment
+
+Note that you have to give three parameters: \textit{NAME}, \textit{BEGIN-COMMANDS} and \textit{END-COMMANDS}.
+\begin{itemize}
+    \item The name parameter covers the name of your new environment and what you put in the \textit{begin} and \textit{end} command
+    \item The begin-commands is the commands that would be executed when the environment starts
+    \item The end-commands is the commands that would be executed when the environment ends
+\end{itemize}
+
+Lets make an example where we make a custom environment that allows us to write theorems
+\begin{verbatim}
+\newenvironment{highlightbox}[1] % Accepts 1 argument
+{
+    \begin{mdframed}[backgroundcolor=yellow!20, linecolor=orange]
+    \textbf{#1}
+}
+{
+    \end{mdframed}
+}
+\end{verbatim}
+
+If i make this environment i get the following output:
+
+\begin{highlightbox}{Important Note}
+    Hello
+\end{highlightbox}
+
+This is just one example of how you could use a custom environment.
 
 \subsection{Lists}
 In \LaTeX it's possible for us to create lists of different styles. Whether you want to create a bullet list, numbered list of something completely different 
