@@ -3,3 +3,5 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qgray!30 How I label What figure img:IMAGEDESCRIPTION Image fig:FIGUREDESCRIPTION Figure secc:SECTIONDESCRIPTION Section tab:TABLEDESCRIPTION Table gra:GRAPHDESCRIPTION Graph Labeling Guide for Figures and Tables\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QNow that we know how to insert images into our document using the includegraphics command, we will look into the positioning of the image.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QWe use the includegraphics to import the picture: This is the most basic way of inserting an image.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qgray!30 Command When $MATH$ Used for making math inline.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QTo create a bullet list you will use the itemize environment\\E$"}
