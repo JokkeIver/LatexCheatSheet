@@ -167,7 +167,7 @@ This includes different options for serif, sans serif and monospaced (Typewriter
     \label{tab:font_family}
 \end{table} % Table for different basic font-family
 
-If you want to see more fonts you can check under the section  \hyperref[secc:font-family-sheet]{Miscellaneous and font-family}
+If you want to see more fonts you can check under the section \hyperref[secc:font-family-sheet]{Miscellaneous and font-family}
 
 When you have to use another font, as one shown under the section Miscellaneous, you have to import the "font package name" by implementing \bs{usepackage\{\textit{Font-Package-Name}\}}.
 This allows you to use this font throughout your document.
@@ -468,7 +468,7 @@ We will in this section look into different ways to do different mathematical me
 
 \subsection{Math Environment}
 There are two groups of math Environment to use in a \LaTeX document. One for math inline with the text, and one for display.
-There are three different ways of writing math from any of these two groups
+But within each of these groups are three different ways of writing math from any of these two groups
 
 \begin{table}[h]
     \centering
@@ -492,7 +492,38 @@ These commands as stated in the table above will do precisely the same as long a
 you want to use, and what you think is going to make your \LaTeX code prettier and easier to read. \\
 
 These enviroments is the foundation of writing math in \LaTeX, since it is not possible to write any math symbols, operators or anything outside these.
+
 \subsection{Operators}
+\LaTeX allows for all the different mathematic operators. The most basic can just be written by using the keyboard - but if youu want to enter some more text-based operators like $\log, \; \cos, \; \sin, \; \tan$, you have to use some commands. The basic operators, and how they will look can you see here.
+
+\begin{table}[h]
+   \centering
+   \begin{tabular}{|c|c|} \hline
+    \rowcolor{gray!30}
+    Operator & Visual representation in Math environment \\ \hline
+    + & $+$ \\ \hline
+    - & $-$ \\ \hline
+    / & $/$ \\ \hline
+    * & $*$ \\ \hline
+   \end{tabular} 
+\end{table}
+
+There are a few of these - for example the $*$ and $/$ - which has some prettier alternatives you can use. These are as follows
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        \rowcolor{gray!30}
+        Alternative command & Result \\ \hline
+        \bs{cdot} & $\cdot$ \\ \hline
+        \bs{frac\{x\}\{y\}} & $\frac{x}{y}$ \\ \hline
+    \end{tabular}
+\end{table}
+
+Using these commands does a small different, but will look much prettier in the long run.
+
+
+To get a longer list of all the different commands to the operators check under \hyperref[secc:Math-Operators]{Miscellaneous and Mathematics Operators}
 \subsection{Symbols}
 \subsection{Tables}
 \subsection{Graphs}
@@ -531,6 +562,11 @@ These enviroments is the foundation of writing math in \LaTeX, since it is not p
     \label{secc:Image-Units}
 }
     
+\subsection{Mathematics}
+    \subsubsection{Operators}
+    \input{TexFiles/Math-Operators.tex}
+    \label{secc:Math-Operators}
+
 
 % \subsection{Emojies}
 % \subsection{Custom Commands}
