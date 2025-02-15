@@ -1,0 +1,33 @@
+\section{Semantics}
+Useful for drawing proof trees.
+
+\begin{multicols}{2}
+    \begin{minipage}{\linewidth}
+        \textbf{Input:}
+        \begin{verbatim}
+\usepackage{ebproof}
+...
+\begin{prooftree}
+    \hypo{\rho(y) = 10}
+    \infer1{\rho \vdash y \Rightarrow 10}
+    \hypo{\rho(x) = 5}
+    \infer1{\rho \vdash x \Rightarrow 5}
+    \hypo{15 = 10 + 5}
+    \infer3{\rho \vdash y + x \Rightarrow 15}
+\end{prooftree}\end{verbatim}
+    \end{minipage}
+
+    \begin{minipage}{\linewidth}
+        \textbf{Output:} \\
+        \begin{prooftree}
+            \hypo{\rho(y) = 10}
+            \infer1{\rho \vdash y \Rightarrow 10}
+            \hypo{\rho(x) = 5}
+            \infer1{\rho \vdash x \Rightarrow 5}
+            \hypo{15 = 10 + 5}
+            \infer3{\rho \vdash y + x \Rightarrow 15}
+        \end{prooftree}
+    \end{minipage}
+\end{multicols}
+
+
