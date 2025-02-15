@@ -1,0 +1,75 @@
+\usepackage{tikzsymbols} % For inserting CoffeeCup
+\usepackage[hidelinks]{hyperref} % For making hyperlinks between table of contents and sections; [hidelinks] - makes the link not standout
+\usepackage{float} % Allow the use of [h]
+\usepackage{layouts} % For showing the layout settings for different environments
+
+ % Math Packages 
+\usepackage{amsmath} % For basic math operations
+\usepackage{amssymb}
+
+% For images and manipulation thereof
+\usepackage{graphicx} % Basic image import and manipulation 
+\graphicspath{Images/}
+\usepackage{wrapfig} % For allowing images to be wrapped around text
+
+%Package for list
+\usepackage{listings}
+\usepackage{enumitem}
+
+% For modifying tables
+\usepackage[table]{xcolor} % Allows the coloring of tables
+\usepackage{mdframed}
+
+% Custom environments
+\newenvironment{highlightbox}[1] % Accepts 1 argument
+{
+    \begin{mdframed}[backgroundcolor=yellow!30, linecolor=orange]
+    \textbf{#1} \\
+}
+{
+    \end{mdframed}
+}
+
+% Package for pseudocode 
+% See: https://mirrors.dotsrc.org/ctan/macros/latex/contrib/pseudo/doc/pseudo.pdf
+%For more information
+\usepackage{pseudo}
+
+
+% Control of the multi columns setup
+\usepackage{multicol} % Used for making multicolumns
+\setlength{\columnsep}{40pt} % Space between columns
+\setlength{\columnwidth}{0.45\textwidth} % Width of the columns
+
+
+% Setup for margens
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+
+% Custom commands
+\newcommand{\jbs}[1]{\textbackslash{}#1} % To use \jbs{} for writing out commands
+\newcommand{\myblock}{} % for making custom blocks 
+\newcommand{\randomtext}{Hello, here is some text without a meaning. Hello, here is some text without a meaning. Hello, here is some text without a meaning.} % For making useless text
+
+% Creates the title for the document
+\title{\LaTeX~- Cheat Sheet \\
+        \large A collection of useful \LaTeX codes for Computer Science \\
+        Version: 1.1 \\
+        Last updated: \today
+}
+\author{Joakim Iversen}
+\date{}
+
+% Setup for the titlepage
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+% Needed to do beautiful semantics in prooftrees
+\usepackage{ebproof}
