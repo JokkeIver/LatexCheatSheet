@@ -3,6 +3,7 @@
 \usepackage[hidelinks]{hyperref} % For making hyperlinks betwwen table of contents and sections; [hidelinks] - makes the link not standout
 \usepackage{float} % Allow the use of [h]
 \usepackage{amsmath} % For basic math operations
+\usepackage{amssymb}
 
 % For images and manipulation thereof
 \usepackage{graphicx} % Basic image import and manipulation 
@@ -520,11 +521,10 @@ There are a few of these - for example the $*$ and $/$ - which has some prettier
     \end{tabular}
 \end{table}
 
-Using these commands does a small different, but will look much prettier in the long run.
-
-
-To get a longer list of all the different commands to the operators check under \hyperref[secc:Math-Operators]{Miscellaneous and Mathematics Operators}
+Using these commands does a small different, but will look much prettier in the long run. To get a longer list of all the different commands to the operators check under \hyperref[secc:Math-Operators]{Miscellaneous and Mathematics Operators} \\
+\textbf{NB} That Many of the things in the table is just text based - But theres a difference between the plain text from writing it, and using the command shown in the table.
 \subsection{Symbols}
+One of the powers of \LaTeX is the ability to write many different symbols. This is especially useful when writing math, but can also be used in normal text. Most of the symbols can be written by using the normal name for the symbol for lower case and for uppercase write the first letter in uppercase. To see a larger list of symbols you can check under \hyperref[secc:Math-Symbols]{Miscellaneous and Mathematics symbols}. \\ 
 \subsection{Tables}
 \subsection{Graphs}
 \newpage
@@ -567,6 +567,9 @@ To get a longer list of all the different commands to the operators check under 
     \input{TexFiles/Math-Operators.tex}
     \label{secc:Math-Operators}
 
+    \subsubsection{Symbols}
+    \input{TexFiles/Math-Symbols.tex}
+    \label{secc:Math-Symbols}
 
 % \subsection{Emojies}
 % \subsection{Custom Commands}
