@@ -11,6 +11,17 @@
 \graphicspath{Images/}
 \usepackage{wrapfig} % For allowing images to be wrapped around text
 
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showspaces=false
+}
 
 % For modifying tables
 \usepackage[table]{xcolor} % Allows the coloring of tables
@@ -526,9 +537,77 @@ Using these commands does a small different, but will look much prettier in the 
 \textbf{NB} That Many of the things in the table is just text based - But theres a difference between the plain text from writing it, and using the command shown in the table.
 
 \subsection{Symbols}
-One of the powers of \LaTeX is the ability to write many different symbols. This is especially useful when writing math, but can also be used in normal text. Most of the symbols can be written by using the normal name for the symbol for lower case and for uppercase write the first letter in uppercase. To see a larger list of symbols you can check under \hyperref[secc:Math-Symbols]{Miscellaneous and Mathematics symbols}. \\ 
+One of the powers of \LaTeX is the ability to write many different symbols. This is especially useful when writing math, but can also be used in normal text. Most of the symbols can be written by using the normal name for the symbol for lower case and for uppercase write the first letter in uppercase. To see a larger list of symbols you can check under \hyperref[secc:Math-Symbols]{Miscellaneous and Mathematics symbols}. 
 
+For using some of these symbols it's maybe needed to implement the following usepackage;
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|} \hline
+       \rowcolor{gray!30} 
+       Usepackage implementation & What the usepackage does \\ \hline
+       \bs{usepackage\{amssymb\}} & Used to import symbols for your document \\ \hline 
+    \end{tabular}
+\end{table}
 \subsection{Tables}
+There can be many different needs for tables and therefor there also exist many ways of implementing an editing a table in \LaTeX. We will start at the beginning and slowly add more things to enhance the 
+visuals of the tables.
+
+\subsection*{The Basic of \LaTeX Tables}
+We will start by taking a look at one of the simplest tables you can create in \LaTeX
+\begin{multicols}{2}
+  \textbf{Setup:}
+  \begin{lstlisting}
+  \begin{center}
+    \begin{tabular}{ c c c}
+      cell1 & cell2 & cell3 \\
+      cell4 & cell5 & cell6 \\
+      cell7 & cell8 & cell9
+    \end{tabular}
+  \end{center}
+  \end{lstlisting}
+  \columnbreak
+
+  \textbf{Output:}
+  \begin{center}
+    \begin{tabular}{ c c c }
+      cell1 & cell2 & cell3 \\
+      cell4 & cell5 & cell6 \\
+      cell7 & cell8 & cell9
+    \end{tabular}
+  \end{center}
+\end{multicols}
+
+We will now look at this example a bit more indepth. The whole center environment wrapped around the tabular environemnt is used to center the table on the page. The tabular environment is the most basic way of creating a table in \LaTeX, when doing so you also must give a parameterr to the environemnt. Here we have given "\{ c c c \}" which states that we want to have three columns, each with the contents centered.
+The tabular environemnt also allows for more flexibility. This can be by adding vertical lines to sepperate the columns 
+
+\begin{multicols}{2}
+  \textbf{Setup:}
+  \begin{lstlisting}
+  \begin{center}
+    \begin{tabular}{ | c | c | c | }
+      \hline
+      cell1 & cell2 & cell3 \\
+      cell4 & cell5 & cell6 \\
+      cell7 & cell8 & cell9 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \end{lstlisting}
+  \columnbreak
+
+  \textbf{Output:}
+  \begin{center}
+    \begin{tabular}{ | c | c | c | }
+      \hline
+      cell1 & cell2 & cell3 \\
+      cell4 & cell5 & cell6 \\
+      cell7 & cell8 & cell9 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{multicols}
+
+Looking at the code from above we can see the following new things.
 
 \subsection{Graphs}
 \newpage
